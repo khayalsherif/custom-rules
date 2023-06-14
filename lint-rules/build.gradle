@@ -1,0 +1,23 @@
+plugins {
+    id 'java-library'
+    id 'org.jetbrains.kotlin.jvm'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+dependencies {
+    def lint_version = '30.1.0-alpha03'
+    compileOnly "com.android.tools.lint:lint-api:$lint_version"
+
+    testImplementation "com.android.tools.lint:lint-tests:$lint_version"
+    testImplementation 'junit:junit:4.13.2'
+}
+
+jar {
+    manifest {
+        attributes('Lint-Registry-v2': 'az.khayalsharifli.lint_rules.CustomLintRegistry')
+    }
+}
