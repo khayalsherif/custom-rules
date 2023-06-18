@@ -24,7 +24,7 @@ class MethodNamingVisitor(private val context: JavaContext) : UElementHandler() 
             scopeClass = node,
             location = context.getNameLocation(node),
             message = """
-                [String] string parametrelerin sonunda Once keyi olmalıdir. 
+                [String] string parameters must have a Once key at the end.
                 Example: removeAccountOnce()
             """
         )
