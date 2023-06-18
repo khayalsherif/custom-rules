@@ -1,12 +1,12 @@
-package az.khayalsharifli.lint_rules
+package az.khayalsharifli.lint_rules.naming_rule
 
-import az.khayalsharifli.lint_rules.RxJavaUnconventionalMethodNamingIssue.ISSUE
 import com.android.tools.lint.client.api.UElementHandler
 import com.android.tools.lint.detector.api.JavaContext
 import com.intellij.psi.PsiClassType
 import org.jetbrains.uast.UMethod
 
-class RxNodeVisitor(private val context: JavaContext) : UElementHandler() {
+@Suppress("UnstableApiUsage")
+class MethodNamingVisitor(private val context: JavaContext) : UElementHandler() {
     override fun visitMethod(node: UMethod) {
         if (node.returnClassName() == "String") {
             if (!node.name.endsWith("Once")) {
@@ -20,11 +20,11 @@ class RxNodeVisitor(private val context: JavaContext) : UElementHandler() {
 
     private fun reportIssue(node: UMethod) {
         context.report(
-            issue = ISSUE,
+            issue = MethodNamingIssue.ISSUE,
             scopeClass = node,
             location = context.getNameLocation(node),
             message = """
-                [String] string parametrelerin sonunda Once keyi olmalı. 
+                [String] string parametrelerin sonunda Once keyi olmalıdir. 
                 Example: removeAccountOnce()
             """
         )

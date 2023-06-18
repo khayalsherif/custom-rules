@@ -2,7 +2,6 @@ package az.khayalsharifli.customapp
 
 import android.os.Bundle
 import az.khayalsharifli.customapp.base.BaseFragment
-import dagger.hilt.android.AndroidEntryPoint
 
 class AFragment : BaseFragment() {
 
